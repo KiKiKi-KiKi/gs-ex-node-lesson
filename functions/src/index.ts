@@ -19,6 +19,35 @@ router.get('/hello', (req: express.Request, res: express.Response) => {
   res.send('Hello Express!');
 });
 
+interface User {
+  id: number;
+  name: string;
+  type: 'cute' | 'cool' | 'pop' | 'sexy';
+}
+
+const USERS: User[] = [
+  { id: 1, name: '星宮いちご', type: 'cute' },
+  { id: 2, name: '霧矢あおい', type: 'cool' },
+  { id: 3, name: '紫吹蘭', type: 'sexy' },
+  { id: 4, name: '藤堂ユリカ', type: 'cool' },
+  { id: 5, name: '有栖川おとめ', type: 'pop' },
+  { id: 6, name: '神崎美月', type: 'sexy' },
+  { id: 7, name: '夏樹みくる', type: 'pop' },
+  { id: 8, name: '大空あかり', type: 'cute' },
+];
+
+router.get('/users/:userId', (req: express.Request, res: express.Response) => {
+  const userId: number | null = req.params.userId
+    ? Number(req.params.userId)
+    : null;
+
+  const targetUser: User | undefined = USERS.find(
+    (user: User) => user.id === userId,
+  );
+
+  res.send(targetUser);
+});
+
 // Routing
 app.use('/', router);
 
