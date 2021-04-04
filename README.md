@@ -10,10 +10,13 @@ https://github.com/firebase/firebase-tools
 $ npm install -g firebase-tools
 ```
 
-- node `v14.16.0`
-- firebase-tools `9.8.0`
+> 重要: Node.js バージョン 10、12、14（ベータ版）がサポートされています。これらのバージョンの Node.js の継続的なサポートに関する重要な情報については、ランタイム オプションを設定するをご覧ください。  
+> https://firebase.google.com/docs/functions/get-started?hl=ja
 
-Check version `npm list -g depth=0`
+- node ~~`v14.16.0`~~ `v12.21.0`
+- firebase-tools `v9.8.0`
+
+Check version `npm list -g --depth=0`
 
 ### firebase init
 
@@ -42,4 +45,12 @@ x Use an existing project
 ? Do you want to use ESLint to catch probable bugs and enforce style? (Y/n) Y
 
 ? Do you want to install dependencies with npm now? (Y/n) Y
+```
+
+## Development
+
+### Start local server
+
+```sh
+$ firebase serve
 ```
