@@ -5,10 +5,21 @@ import * as functions from 'firebase-functions';
 import express = require('express');
 
 const app: express.Express = express();
+const router: express.Router = express.Router();
 
-app.get('/hello', (req: express.Request, res: express.Response) => {
+// Disabled X-Powered-By Header
+app.disable('x-powered-by');
+// Allow application/json
+app.use(express.json());
+// Allow application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
+
+router.get('/hello', (req: express.Request, res: express.Response) => {
   functions.logger.info('Hello logs!', { structuredData: true });
   res.send('Hello Express!');
 });
+
+// Routing
+app.use('/', router);
 
 export const api = functions.https.onRequest(app);
