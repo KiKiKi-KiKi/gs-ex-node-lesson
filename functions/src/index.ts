@@ -5,6 +5,7 @@ import * as functions from 'firebase-functions';
 import express = require('express');
 
 const app: express.Express = express();
+// eslint-disable-next-line new-cap
 const router: express.Router = express.Router();
 
 // Disabled X-Powered-By Header
