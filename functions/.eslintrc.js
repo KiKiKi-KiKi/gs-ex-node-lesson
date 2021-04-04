@@ -5,26 +5,37 @@ module.exports = {
     node: true,
   },
   extends: [
-    "eslint:recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript",
-    "google",
-    "plugin:@typescript-eslint/recommended"
+    'eslint:recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
+    'google',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
   ],
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: ["tsconfig.json", "tsconfig.dev.json"],
-    sourceType: "module",
+    project: ['tsconfig.json', 'tsconfig.dev.json'],
+    sourceType: 'module',
   },
   ignorePatterns: [
-    "/lib/**/*", // Ignore built files.
+    '/lib/**/*', // Ignore built files.
   ],
-  plugins: [
-    "@typescript-eslint",
-    "import",
-  ],
+  plugins: ['@typescript-eslint', 'import'],
   rules: {
-    quotes: ["error", "double"],
+    // quotes: ["error", "double"],
+    'eol-last': ['error', 'always'],
+    indent: ['error', 2, { SwitchCase: 1 }],
+    'newline-before-return': 'error',
+    'no-console': 'warn',
+    'no-dupe-class-members': 'error',
+    'no-var': 'error',
+    'object-shorthand': ['error', 'always'],
+    'prefer-arrow-callback': 'error',
+    'prefer-const': 'error',
+    'prefer-spread': 'error',
+    'require-yield': 'error',
   },
 };
