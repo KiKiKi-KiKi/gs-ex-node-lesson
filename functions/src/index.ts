@@ -3,6 +3,7 @@ import * as functions from 'firebase-functions';
 // => This module is declared with using 'export =', and can only be used with a default import when using the 'esModuleInterop' flag.
 // cf. https://qiita.com/karak/items/29ff148788f5abb15331
 import express = require('express');
+import errorHandler, { notFoundException } from './errorExceptions';
 
 const app: express.Express = express();
 // eslint-disable-next-line new-cap
@@ -42,14 +43,26 @@ router.get('/users/:userId', (req: express.Request, res: express.Response) => {
     ? Number(req.params.userId)
     : null;
 
+  if (!userId) {
+    throw notFoundException('No user!');
+  }
+
   const targetUser: User | undefined = USERS.find(
     (user: User) => user.id === userId,
   );
+
+  console.log({ targetUser });
+  if (!targetUser) {
+    throw notFoundException('No user!');
+  }
 
   res.send(targetUser);
 });
 
 // Routing
 app.use('/', router);
+
+// Error Handler
+app.use(errorHandler);
 
 export const api = functions.https.onRequest(app);
