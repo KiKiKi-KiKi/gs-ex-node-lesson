@@ -36,10 +36,10 @@ $ firebase init
 x Functions
 
 ? Please select an option:
-x Use an existing project 
+x Use an existing project
 
-? What language would you like to use to write Cloud Functions? 
-  JavaScript 
+? What language would you like to use to write Cloud Functions?
+  JavaScript
   TypeScript
 
 ? Do you want to use ESLint to catch probable bugs and enforce style? (Y/n) Y
@@ -92,3 +92,31 @@ Project Console: https://console.firebase.google.com/project/gs-hands-on/overvie
 
 :tada: Access firebase console to check deployed URL!
 
+---
+
+## :tractor: Hello Express
+
+### install
+
+```sh
+$ npm install express
+$ npm install -D @types/express
+```
+
+## Express with Firebase Cloud functions!
+
+```ts
+import * as functions from "firebase-functions";
+import express = require("express");
+
+const app: express.Express = express();
+
+app.get("/hello", (req: express.Request, res: express.Response) => {
+  functions.logger.info("Hello logs!", { structuredData: true });
+  res.send("Hello Express!");
+});
+
+export const api = functions.https.onRequest(app);
+```
+
+cf. https://qiita.com/karak/items/29ff148788f5abb15331

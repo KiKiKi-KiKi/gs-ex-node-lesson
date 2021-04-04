@@ -1,10 +1,14 @@
-import * as functions from "firebase-functions";
+import * as functions from 'firebase-functions';
+// import express from 'express';
+// => This module is declared with using 'export =', and can only be used with a default import when using the 'esModuleInterop' flag.
+// cf. https://qiita.com/karak/items/29ff148788f5abb15331
+import express = require('express');
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
+const app: express.Express = express();
 
-// http://localhost:5001/gs-hands-on/us-central1/helloWorld
-export const helloWorld = functions.https.onRequest((request, response) => {
-  functions.logger.info("Hello logs!", {structuredData: true});
-  response.send("Hello from Firebase!");
+app.get('/hello', (req: express.Request, res: express.Response) => {
+  functions.logger.info('Hello logs!', { structuredData: true });
+  res.send('Hello Express!');
 });
+
+export const api = functions.https.onRequest(app);
