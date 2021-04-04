@@ -37,5 +37,6 @@ module.exports = {
     'prefer-const': 'error',
     'prefer-spread': 'error',
     'require-yield': 'error',
+    'require-jsdoc': 'warn',
   },
 };
