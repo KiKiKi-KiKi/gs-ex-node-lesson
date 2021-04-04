@@ -68,3 +68,27 @@ $ npm run serve
 
 :tada:
 
+### How to test running function
+
+```sh
+$ curl http://localhost:5001/<path>/<to>/<function_name>
+```
+
+## How to deploy
+
+```sh
+$ firebase deploy --only functions
+```
+
+or
+
+```sh
+$ cd functions
+$ npm run deploy
+...
+✔  Deploy complete!
+Project Console: https://console.firebase.google.com/project/gs-hands-on/overview
+```
+
+:tada: Access firebase console to check deployed URL!
+
