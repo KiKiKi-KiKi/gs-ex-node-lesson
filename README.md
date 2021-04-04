@@ -53,4 +53,18 @@ x Use an existing project
 
 ```sh
 $ firebase serve
+i  functions: Watching "/Users/kikiki/Documents/local/hands-on/gs-ex-node-lesson/functions" for Cloud Functions...
+⚠  Error: Cannot find module '/Users/kikiki/Documents/local/hands-on/gs-ex-node-lesson/functions/lib/index.js'. Please verify that the package.json has a valid "main" entry
 ```
+
+:point_down:
+
+```sh
+$ cd functions
+$ npm run serve
+...
+✔  functions[helloWorld]: http function initialized (http://localhost:5001/gs-hands-on/us-central1/helloWorld).
+```
+
+:tada:
+
