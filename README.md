@@ -120,3 +120,29 @@ export const api = functions.https.onRequest(app);
 ```
 
 cf. https://qiita.com/karak/items/29ff148788f5abb15331
+
+## Async
+
+- request https://www.npmjs.com/package/request
+- request-promise-native https://www.npmjs.com/package/request-promise-native
+
+:warning: These packages are deprecated!
+
+> As of Feb 11th 2020, request is fully deprecated. No new changes are expected to land. In fact, none have landed for some time.  
+> For more information about why request is deprecated and possible alternatives refer to [this](https://github.com/request/request/issues/3142) issue.  
+> https://github.com/request/request
+
+> As of Feb 11th 2020, [request](https://github.com/request/request) is fully deprecated. No new changes are expected to land. In fact, none have landed for some time. This package is also deprecated because it depends on request.  
+> https://github.com/request/request-promise-native
+
+cf. https://qiita.com/hide2018/items/0507e488d91e28592ca4
+
+- node-fetch https://www.npmjs.com/package/node-fetch
+- axios https://www.npmjs.com/package/axios
+
+### node-fetch with TypeScript
+
+```sh
+$ npm install node-fetch
+$ npm install @types/node-fetch
+```
