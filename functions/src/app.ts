@@ -3,7 +3,7 @@ import { logger } from 'firebase-functions';
 // => This module is declared with using 'export =', and can only be used with a default import when using the 'esModuleInterop' flag.
 // cf. https://qiita.com/karak/items/29ff148788f5abb15331
 import express = require('express');
-import cors from 'cors';
+import cors = require('cors');
 import fetch from 'node-fetch';
 import errorHandler, {
   notFoundException,
