@@ -12,7 +12,6 @@ module.exports = {
     'google',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
   parser: '@typescript-eslint/parser',
@@ -27,7 +26,7 @@ module.exports = {
   rules: {
     // quotes: ["error", "double"],
     'eol-last': ['error', 'always'],
-    indent: ['error', 2, { SwitchCase: 1 }],
+    '@typescript-eslint/indent': ['error', 2, { SwitchCase: 1 }],
     'newline-before-return': 'error',
     'no-console': 'warn',
     'no-dupe-class-members': 'error',
