@@ -3,6 +3,7 @@ import { logger } from 'firebase-functions';
 // => This module is declared with using 'export =', and can only be used with a default import when using the 'esModuleInterop' flag.
 // cf. https://qiita.com/karak/items/29ff148788f5abb15331
 import express = require('express');
+import cors from 'cors';
 import fetch from 'node-fetch';
 import errorHandler, {
   notFoundException,
@@ -19,6 +20,9 @@ app.disable('x-powered-by');
 app.use(express.json());
 // Allow application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
+
+// Allow all cors
+// app.use(cors());
 
 router.get('/hello', (req: express.Request, res: express.Response) => {
   logger.info('Hello logs!', { structuredData: true });
@@ -89,6 +93,7 @@ const getDataFromApi = async (keyword: string): Promise<BooksData> => {
 
 router.get(
   '/books/:keyword',
+  cors(),
   async (req: express.Request, res: express.Response) => {
     const keywors: string = req.params?.keyword;
     const response = await getDataFromApi(keywors);
