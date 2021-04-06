@@ -8,7 +8,7 @@ export const getDataFromApi = async (keyword: string): Promise<BooksData> => {
     'https://www.googleapis.com/books/v1/volumes?country=JP&q=intitle:';
 
   try {
-    const result = await fetch(`${requestUrl}${keyword}`);
+    const result = await fetch(`${requestUrl}${encodeURI(keyword)}`);
 
     return result.json();
   } catch (error) {
