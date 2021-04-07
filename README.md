@@ -164,3 +164,27 @@ $ npm install -D @types/cors
 $ npm install firebase-admin
 ```
 
+### Generate Secret key
+
+1. Access firebase console
+2. Go project page
+3. Project settings
+4. Service account tab
+5. Generate new secret key
+6. Download `serviceAccountKey.json`
+7. Put `serviceAccountKey.json` in project
+
+### Connect firebase
+
+```js
+var admin = require("firebase-admin");
+
+var serviceAccount = require("path/to/serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
+
+module.exports = admin;
+```
+
