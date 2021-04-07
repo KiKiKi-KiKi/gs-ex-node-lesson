@@ -144,5 +144,23 @@ cf. https://qiita.com/hide2018/items/0507e488d91e28592ca4
 
 ```sh
 $ npm install node-fetch
-$ npm install @types/node-fetch
+$ npm install -D @types/node-fetch
 ```
+
+### cors
+
+```sh
+$ npm install cors
+$ npm install -D @types/cors
+```
+
+---
+
+## Connect Cloud Firestore
+
+### install firebase-admin
+
+```sh
+$ npm install firebase-admin
+```
+
