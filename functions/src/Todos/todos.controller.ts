@@ -1,8 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 
-import { admin } from '../model/firebase';
-const db = admin.firestore();
+import { db } from '../model/firebase';
 const COLLECTION = 'todos';
 
 // eslint-disable-next-line new-cap
