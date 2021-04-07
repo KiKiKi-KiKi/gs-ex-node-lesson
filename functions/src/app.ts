@@ -9,6 +9,7 @@ import errorHandler from './errorExceptions';
 // routing
 import { router as usersRouter } from './Users/users.controller';
 import { router as booksRouter } from './Books/books.controller';
+import { router as todosRouter } from './Todos/todos.controller';
 
 const app: express.Express = express();
 // eslint-disable-next-line new-cap
@@ -33,6 +34,7 @@ router.get('/hello', (req: express.Request, res: express.Response) => {
 app.use('/', router);
 app.use('/users', usersRouter);
 app.use('/books', booksRouter);
+app.use('/todos', todosRouter);
 
 // Error Handler
 app.use(errorHandler);
