@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-type errorData = {
+export type errorData = {
   [key: string]: any;
 };
 
