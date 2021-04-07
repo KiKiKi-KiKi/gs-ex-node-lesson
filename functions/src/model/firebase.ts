@@ -6,3 +6,11 @@ admin.initializeApp({
 });
 
 export const db = admin.firestore();
+
+export const getTimestamp = (timestamp: number): admin.firestore.Timestamp => {
+  return admin.firestore.Timestamp.fromDate(new Date(timestamp));
+};
+
+export const getCreateAtTimestamp = (): FirebaseFirestore.FieldValue => {
+  return admin.firestore.FieldValue.serverTimestamp();
+};
