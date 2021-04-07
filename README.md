@@ -144,5 +144,47 @@ cf. https://qiita.com/hide2018/items/0507e488d91e28592ca4
 
 ```sh
 $ npm install node-fetch
-$ npm install @types/node-fetch
+$ npm install -D @types/node-fetch
 ```
+
+### cors
+
+```sh
+$ npm install cors
+$ npm install -D @types/cors
+```
+
+---
+
+## Connect Cloud Firestore
+
+### install firebase-admin
+
+```sh
+$ npm install firebase-admin
+```
+
+### Generate Secret key
+
+1. Access firebase console
+2. Go project page
+3. Project settings
+4. Service account tab
+5. Generate new secret key
+6. Download `serviceAccountKey.json`
+7. Put `serviceAccountKey.json` in project
+
+### Connect firebase
+
+```js
+var admin = require("firebase-admin");
+
+var serviceAccount = require("path/to/serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
+
+module.exports = admin;
+```
+
