@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
-import { apiError, getAllTodos } from './todos.service';
+import { apiError, getAllTodos, createTodo } from './todos.service';
 
 // eslint-disable-next-line new-cap
 const router = Router();
@@ -18,9 +18,23 @@ router.get(
   },
 );
 
-router.post('/', cors(), async (req: Request, res: Response) => {
-  res.send('Todos POST endpoint');
-});
+router.post(
+  '/',
+  cors(),
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const postData = req.body;
+      if (!postData) {
+        return next();
+      }
+
+      const newTodoItem = await createTodo(postData);
+      res.send(newTodoItem);
+    } catch (err) {
+      next(apiError(err, { _method: 'createTodo' }));
+    }
+  },
+);
 
 router.put('/:id', cors(), async (req: Request, res: Response) => {
   res.send('Todo PUT endpoint');
