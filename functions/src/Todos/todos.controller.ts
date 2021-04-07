@@ -1,8 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
-
-import { db } from '../model/firebase';
-const COLLECTION = 'todos';
+import { getAllTodos } from './todos.service';
+import { internalServerErrorException } from '../errorExceptions';
 
 // eslint-disable-next-line new-cap
 const router = Router();
@@ -12,24 +11,16 @@ router.get(
   cors(),
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const todoSnapshot: FirebaseFirestore.QuerySnapshot<FirebaseFirestore.DocumentData> = await db
-        .collection(COLLECTION)
-        .orderBy('isDone', 'asc')
-        .orderBy('dueDate', 'asc')
-        .get();
-
-      const todos = todoSnapshot.docs.map(
-        (item: FirebaseFirestore.DocumentData) => {
-          return {
-            id: item.id,
-            data: item.data(),
-          };
-        },
-      );
-
+      const todos = await getAllTodos();
       res.send(todos);
     } catch (err) {
-      next(err);
+      const { message, ...error } = err;
+      next(
+        internalServerErrorException(message, {
+          _method: 'getAllTodos',
+          ...error,
+        }),
+      );
     }
   },
 );
